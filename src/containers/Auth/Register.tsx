@@ -10,7 +10,7 @@ import Title from '../../components/Title';
 export default class Register extends React.Component {
     public render() {
         return (
-            <Container>
+            <Container center= {true}>
             <Card >
               <Center>
               <Title>Registro de usuarios</Title>
