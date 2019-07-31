@@ -9,6 +9,7 @@ export default class NewsFeed extends React.Component {
           margin:'0 auto'
         }}>
           <Post image={"http://lorempixel.com/200/200"} />
+          <Post image={"http://lorempixel.com/200/200"} />
       </div>
       </Container>
     );

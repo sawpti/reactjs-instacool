@@ -1,5 +1,5 @@
 import * as React from 'react';
-const style=(center:boolean)=>({
+const style=(center:boolean): React.CSSProperties=>({
     alignItems: center? 'center':undefined,
     backgroundColor: '#eee',
     display: 'flex',
@@ -7,8 +7,10 @@ const style=(center:boolean)=>({
     justifyContent:'center',
     padding: '10px 15px',
     width:'cal(100vw - 30px)',
+    flexDirection:'row'
+    
    
-  });
+  }  );
 interface IContainerPorps{
     center?: boolean
 }
