@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Center from '../../components/Center';
 import Container from '../../components/Container';
-import Input from '../../components/Input';
+// import Input from '../../components/Input';
 import Title from '../../components/Title';
 
 export default class Register extends React.Component {
@@ -15,13 +15,13 @@ export default class Register extends React.Component {
               <Center>
               <Title>Registro de usuarios</Title>
               </Center>
-              <Input label='Nombres' placeholder='Nombres'/>
+            {/* {  <Input label='Nombres' placeholder='Nombres'/>
               <Input label='Apellidos' placeholder='Apellidos'/>
               <Input label='Ciudad' placeholder='Ciudad'/>
               <Input label='Comuna' placeholder='Comuna'/>
               <Input label='Correo' placeholder='Correo'/>
-              <Input label='Contraseña' placeholder='Contraseña'/>
-              <Button block={true}  >Registrarse</Button>
+              <Input label='Contraseña' placeholder='Contraseña'/> */}
+              <Button block={true}  >Registrarse</Button>} 
               <Center>
               <Link to='/'>Iniciar sesión</Link>
               </Center>     

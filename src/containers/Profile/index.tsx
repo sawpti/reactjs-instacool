@@ -1,40 +1,37 @@
 import * as React from 'react';
-import { Media } from 'react-bootstrap/';
+import ProfileImg from '../../components/ProfileImg';
+import Button from 'src/components/Button';
+import Card from 'src/components/Card';
 
-
-
-export interface IProfileProps {
-    urlfoto?: string
-    trigger?: any
+const styles = {
+    row: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: '10px',
+       // padding: '15px',
+    }
+    // container: {
+        // display: 'flex',
+        // justifyContent: 'space-between',
+        // padding: '15px',
+    // }
 }
 
-export default class Profile extends React.Component<IProfileProps> {
+export default class Profile extends React.Component {
     public render() {
-        const { urlfoto = "http://lorempixel.com/200/200" } = this.props
+
         return (
-
-
-
-            <div  className="container">
-
-                <Media>
-                    <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={urlfoto}
-                        alt="Generic placeholder"
-                    />
-                    <Media.Body>
-                        <h5>Media Heading</h5>
-                        <p>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                            ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                            tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                            Donec lacinia congue felis in faucibus.
-    </p>
-                    </Media.Body>
-                </Media>
+            <div className="container-fluid">
+                <div  style={styles.row}>
+                    <ProfileImg />
+                    <Button>Agregar</Button>
+                </div>
+                <div style={styles.row}>
+                    <Card>hola</Card>
+                    <Card>hola</Card>
+                    <Card>hola</Card>
+                   
+                </div>
             </div>
         );
     }
