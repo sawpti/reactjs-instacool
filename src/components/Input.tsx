@@ -25,6 +25,7 @@ interface IIputProps {
 const Input: React.StatelessComponent<WrappedFieldProps &  IIputProps> =(props)=>{
 
     const {label}=props;
+    
 
     return (
         <div>

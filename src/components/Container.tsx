@@ -7,7 +7,7 @@ const style=(center:boolean): React.CSSProperties=>({
     justifyContent:'center',
     padding: '10px 15px',
     width:'cal(100vw - 30px)',
-    flexDirection:'row'
+    flexDirection:'column'
     
    
   }  );

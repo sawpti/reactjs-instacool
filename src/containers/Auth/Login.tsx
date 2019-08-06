@@ -31,7 +31,7 @@ class Login extends React.Component <ILoginProps> {
 }
 const mapStateToProps = (state: any )=>state;
 const mapDispatchToProps = (dispatch:any)=>({
-  login: (payload: any)=>dispatch(loginThunk (payload))
+  login: (payload : any)=>dispatch(loginThunk (payload))
   
 })
 
