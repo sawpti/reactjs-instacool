@@ -10,7 +10,7 @@ const style = {
 
 };
 interface IPostProps {
-  image: string,
+  image: string
 }
 export default class Post extends React.Component<IPostProps> {
   public render() {
