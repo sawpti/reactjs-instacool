@@ -14,7 +14,7 @@ class LoginForm extends React.Component<InjectedFormProps<{email:string}>>{
         <Field label='Contraseña' placeholder='Contraseña' name='password' type='password' component={Input}  />
         <Button block = {true}  >Entrar</Button>
         <Center>
-          <Link to='./registro'>Registrarse</Link>
+          <Link to='/registro'>Registrarse</Link>
         </Center>
       </form>
     );
