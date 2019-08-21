@@ -13,14 +13,14 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig)
 
 
-    const firestore = firebase.firestore()
+   // const firestore = firebase.firestore()
   //  const settings = {timestampsInSnapshots: true}
-   // irestore.settings(settings) 
+   //     irestore.settings(settings) 
 
   export const auth = firebase.auth()
-  export const db = firestore
- // export const db = firebase.firestore()
-  export const storege = firebase.storage()
+ //  export const db = firestore
+  export const db = firebase.firestore()
+  export const storage = firebase.storage()
   
   
 
