@@ -126,16 +126,16 @@ export const like = (id: string) =>
         // C87 - Conectando react con backend + C88 agregar token auth  
         // C89 - Agregamos un template string con el id del post seguido de la accion que queremos ejecutar
         // accion = like    
-        // const result = para prueba va la linea de abajo
+       // const result =
         await fetch(`/api/posts/${id}/like`, {
             headers: {
                 authorization: token
             }
         })
-        console.log(id);
-        /*  const text = await result.text()
-        // tslint:disable-next-line: no-console
-        console.log(text) */
+        // console.log(id);
+        //   const text = await result.text()
+        // // tslint:disable-next-line: no-console
+        // console.log(text) 
     }
 
 export const share = (id: string) =>

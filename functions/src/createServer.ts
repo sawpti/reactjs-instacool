@@ -1,11 +1,88 @@
-import * as express from 'express'
-// import * as admin from 'firebase-admin'
+ import * as express from 'express'
+ import * as admin from 'firebase-admin'
 
-export default ()=>{
-const app= express()
-  app.get('/', (req,res)=>{
-      res.send("Hola Mundo")
-  })
+
+interface IRequest extends express.Request{
+    user: {
+        uid: string,
+        email: string,
+        role: string,
+    }
+}
+
+admin.initializeApp({
+    credential: admin.credential.applicationDefault(),
+})
+
+const db = admin.firestore()
+db.settings( {timestampsInSnapshots: true} )
+const auth = admin.auth() 
+
+
+
+
+export default () => {
+
+  const app = express()
+
+  app.use(async(req, res, next) => {
+        const token = req.headers.authorization
+        if (token===undefined)
+         {return}           
+        try {         
+            const {uid, email} = await auth.verifyIdToken(token)            
+            const snap = await db.collection('users').doc(uid).get()            
+            const user = snap.data()
+            Object.assign(req, {
+                user: {
+                    ...user,
+                    uid,
+                    email,
+                }
+            })
+           next()
+        } catch (e) {
+              res.status(403).send('Error en la autorización')           
+        }
+    }) 
+
+
+    // app.get('/posts', (req,res) => {
+    //     res.send('Hola mundo')
+    // }) 
+
+     app.get('/posts/:postId/like', async (req:IRequest, res: any) => {
+        const { uid } = req.user
+        const { postId } = req.params  
+        const snaps = await db.collection('likes')
+            .where('userId', '==', uid)
+            .where('postId', '==', postId)
+            .limit(1)
+            .get()             
+        const result: { id?: string } = {} 
+        // Vamos a poder iterar nuestros snaps y guardar el resultado en un objeto llamado result
+         // Mutamos el objeto.Puede o no traer algo. En caso de traer algo va a ser data y los mezclamos con id
+        snaps.forEach(x => Object.assign(result, { ...x.data(), id: x.id }))
+         // Ahora podemos consultar el id del obejto result. Si existe ya hay like (borramos) sino creamos
+        //Preguntamos si existe id:
+        if (result.id){
+            await db.collection('likes').doc(result.id).delete()
+        }        
+        // En caso de no existir el resultado de id
+        if (!result.id){
+            await db.collection('likes').doc().set({
+                userId: uid,
+                postId,
+                createdAt: new Date(),   
+            })
+        }    
+        // Luego con sendStatus(204) significa que no le mandamos nada de contenido sino OK ya se 
+        // efectuo correctamente la accion
+        res.sendStatus(204)
+    })
+
+
+
 
   return app
 
@@ -31,7 +108,7 @@ const app= express()
 
 // // exportamos por defecto una funcion la cual tiene que retornar una aplicacion de express
 // export default () => {
-    
+
 //     // declaramos una cte app y ejecutamos express y se lo entregamos a app
 //     const app = express()    
 //     // creamos nuestro middleware de autenticacion (va seguido de la llamada a express)
@@ -70,7 +147,7 @@ const app= express()
 //     /* app.get('/posts', (req,res) => {
 //         res.send('Aplica siguiente middleware')
 //     }) */
-    
+
 //      app.get('/posts/:postId/like', async (req:IRequest, res: any) => {
 //          // agrego el tipo a res: "any", sino da error
 //         const { uid } = req.user
