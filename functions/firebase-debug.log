@@ -1,0 +1,95 @@
+[debug] [2019-08-26T20:07:53.809Z] ----------------------------------------------------------------------
+[debug] [2019-08-26T20:07:53.811Z] Command:       /usr/local/bin/node /home/hugomartinez/.yarn/bin/firebase serve --only functions
+[debug] [2019-08-26T20:07:53.811Z] CLI Version:   7.0.2
+[debug] [2019-08-26T20:07:53.811Z] Platform:      linux
+[debug] [2019-08-26T20:07:53.811Z] Node Version:  v8.16.0
+[debug] [2019-08-26T20:07:53.811Z] Time:          Mon Aug 26 2019 16:07:53 GMT-0400 (-04)
+[debug] [2019-08-26T20:07:53.811Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-26T20:07:53.817Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-26T20:07:53.817Z] > authorizing via signed-in user
+[debug] [2019-08-26T20:07:53.817Z] [iam] checking project instacool-5ce59 for permissions ["firebase.projects.get"]
+[debug] [2019-08-26T20:07:53.818Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-26T20:07:53.818Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-26T20:07:53.926Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T20:07:54.075Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/instacool-5ce59:testIamPermissions  
+
+[debug] [2019-08-26T20:07:55.146Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T20:07:55.150Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/instacool-5ce59  
+ 
+[debug] [2019-08-26T20:07:56.178Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Using node@8 from host.
+[debug] [2019-08-26T20:07:56.199Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/752376358367:getServerAppConfig  
+ 
+[debug] [2019-08-26T20:07:56.471Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/home/hugomartinez/Programacion/reactjs/instacool/functions" for Cloud Functions...
+[debug] [2019-08-26T20:07:56.827Z] Functions runtime initialized.
+[debug] [2019-08-26T20:07:56.827Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:07:56.872Z] firebase-admin has been stubbed.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/instacool-5ce59/us-central1/api
+[debug] [2019-08-26T20:10:15.052Z] File /home/hugomartinez/Programacion/reactjs/instacool/functions/src/createServer.ts changed, reloading triggers
+[debug] [2019-08-26T20:10:16.512Z] Functions runtime initialized.
+[debug] [2019-08-26T20:10:16.513Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:10:16.559Z] firebase-admin has been stubbed.
+[debug] [2019-08-26T20:12:30.195Z] Accepted request GET /instacool-5ce59/us-central1/api/posts/CmLeMiO02hhYBi5BGZoA/share --> api
+[debug] [2019-08-26T20:12:30.503Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "api"
+[debug] [2019-08-26T20:12:30.504Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:12:30.551Z] firebase-admin has been stubbed.
+[debug] [2019-08-26T20:12:30.673Z] Trigger "api" has been found, beginning invocation!
+[debug] [2019-08-26T20:12:30.673Z] 
+[debug] [2019-08-26T20:12:30.673Z] Running api in mode HTTPS
+[debug] [2019-08-26T20:12:30.681Z] {"socketPath":"/tmp/firebase_emulator_invocation_12272.sock"}
+[debug] [2019-08-26T20:12:30.682Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_12272.sock"}
+[debug] [2019-08-26T20:12:30.698Z] Ephemeral server used!
+[debug] [2019-08-26T20:12:30.699Z] Bodyundefined
+[debug] [2019-08-26T20:12:30.710Z] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~2s
+[debug] [2019-08-26T20:13:07.509Z] Accepted request GET /instacool-5ce59/us-central1/api/posts/TV73MyR1X42o86lyJfOh/share --> api
+[debug] [2019-08-26T20:13:07.857Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "api"
+[debug] [2019-08-26T20:13:07.858Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:13:07.906Z] firebase-admin has been stubbed.
+[debug] [2019-08-26T20:13:08.026Z] Trigger "api" has been found, beginning invocation!
+[debug] [2019-08-26T20:13:08.027Z] 
+[debug] [2019-08-26T20:13:08.027Z] Running api in mode HTTPS
+[debug] [2019-08-26T20:13:08.035Z] {"socketPath":"/tmp/firebase_emulator_invocation_12293.sock"}
+[debug] [2019-08-26T20:13:08.036Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_12293.sock"}
+[debug] [2019-08-26T20:13:08.054Z] Ephemeral server used!
+[debug] [2019-08-26T20:13:08.055Z] Bodyundefined
+[debug] [2019-08-26T20:13:08.067Z] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2019-08-26T20:17:07.234Z] Accepted request GET /instacool-5ce59/us-central1/api/posts/NQJOXUmRPs4g8Q3jMuF8/share --> api
+[debug] [2019-08-26T20:17:07.467Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "api"
+[debug] [2019-08-26T20:17:07.468Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:17:07.516Z] firebase-admin has been stubbed.
+[debug] [2019-08-26T20:17:07.636Z] Trigger "api" has been found, beginning invocation!
+[debug] [2019-08-26T20:17:07.637Z] 
+[debug] [2019-08-26T20:17:07.637Z] Running api in mode HTTPS
+[debug] [2019-08-26T20:17:07.647Z] {"socketPath":"/tmp/firebase_emulator_invocation_12520.sock"}
+[debug] [2019-08-26T20:17:07.647Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_12520.sock"}
+[debug] [2019-08-26T20:17:07.663Z] Ephemeral server used!
+[debug] [2019-08-26T20:17:07.664Z] Bodyundefined
+[debug] [2019-08-26T20:17:07.675Z] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2019-08-26T20:17:18.274Z] Accepted request GET /instacool-5ce59/us-central1/api/posts/GZXg9x0LYPeoKYWnzMwP/like --> api
+[debug] [2019-08-26T20:17:18.607Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "api"
+[debug] [2019-08-26T20:17:18.608Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:17:18.662Z] firebase-admin has been stubbed.
+[debug] [2019-08-26T20:17:18.783Z] Trigger "api" has been found, beginning invocation!
+[debug] [2019-08-26T20:17:18.783Z] 
+[debug] [2019-08-26T20:17:18.783Z] Running api in mode HTTPS
+[debug] [2019-08-26T20:17:18.790Z] {"socketPath":"/tmp/firebase_emulator_invocation_12533.sock"}
+[debug] [2019-08-26T20:17:18.791Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_12533.sock"}
+[debug] [2019-08-26T20:17:18.807Z] Ephemeral server used!
+[debug] [2019-08-26T20:17:18.808Z] Bodyundefined
+[debug] [2019-08-26T20:17:18.819Z] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2019-08-26T20:20:14.763Z] File /home/hugomartinez/Programacion/reactjs/instacool/functions/src/createServer.ts changed, reloading triggers
+[debug] [2019-08-26T20:20:16.051Z] Functions runtime initialized.
+[debug] [2019-08-26T20:20:16.051Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-08-26T20:20:16.102Z] firebase-admin has been stubbed.

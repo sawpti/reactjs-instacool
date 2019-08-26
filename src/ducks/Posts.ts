@@ -10,14 +10,17 @@ const SUCCESS = 'posts/fetch-success'
 const ERROR = 'posts/fetch-error'
 const ADD = 'posts/add' // va a ser de tipo post y accion add
 
+// creamos interfaz de Post (para compartir los post - C93)
+export interface IPost{
+    comment: string,
+    userId: string,
+    createdAt: firestore.Timestamp
+    imageURL: string
+}
+
 // creamos una interfaz para indicar que tipo de datos es payload
 export interface IDataPosts {
-    [key: string]: {
-        comment: string,
-        userId: string,
-        createdAt: firestore.Timestamp
-        imageURL: string
-    }
+    [key: string]: IPost
 }
 
 // Definimos nuestros actions creators
