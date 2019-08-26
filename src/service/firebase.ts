@@ -10,10 +10,17 @@ const firebaseConfig = {
     appId: "1:752376358367:web:0017b454dad2c446"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  export const auth = firebase.auth();
-  export const db = firebase.firestore();
-  export const storege = firebase.storage();
+  firebase.initializeApp(firebaseConfig)
+
+
+   // const firestore = firebase.firestore()
+  //  const settings = {timestampsInSnapshots: true}
+   //     irestore.settings(settings) 
+
+  export const auth = firebase.auth()
+ //  export const db = firestore
+  export const db = firebase.firestore()
+  export const storage = firebase.storage()
   
   
 

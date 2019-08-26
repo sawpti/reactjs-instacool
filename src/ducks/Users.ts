@@ -28,4 +28,5 @@ async (dispatch:Dispatch, getstate: () => any, {auth, db }: IServices)=>{
     const id = user ? user.uid : undefined
     const doc = db.collection('users').doc(id)
     await doc.set({role: 'user'})
+
 }

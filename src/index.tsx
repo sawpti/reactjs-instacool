@@ -1,4 +1,5 @@
-import createHistory  from 'history/createBrowserHistory';
+// import createHistory  from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Router} from 'react-router'
@@ -17,13 +18,12 @@ const store= createStore(combineReducers({
   form: formReducer,
 
 }), applyMiddleware(thunk.withExtraArgument(services)));
-const history = createHistory();
+const history = createBrowserHistory();
 ReactDOM.render(
   <Provider store={store as any}>
   <Router history={history}  >
-      <App />
+       <App  history={history} />
   </Router>
-
   </Provider>,
 
   document.getElementById('root') as HTMLElement

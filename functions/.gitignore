@@ -6,3 +6,6 @@
 typings/
 
 node_modules/
+
+key.json
+key1.json
