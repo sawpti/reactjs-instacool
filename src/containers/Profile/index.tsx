@@ -38,7 +38,6 @@ interface IProfileProps {
     }
 
 class Profile extends React.Component<IProfileProps>{
-    // cache para tratar imagenes
     constructor(props: IProfileProps){
         super(props)
         const { fetchPosts, fetched } = props
@@ -49,7 +48,7 @@ class Profile extends React.Component<IProfileProps>{
     }
 
     public render(){
-        // despues de usar chunk podemos usar a data
+     
         const { data, submitProfileImg, handleProfileImageSubmit, profileImage } = this.props
         return(
            <div style = {style.container}> 
@@ -61,15 +60,12 @@ class Profile extends React.Component<IProfileProps>{
                     <Button>Agregar</Button>
                 </div>
                 {data.map( (x, i) =>         
-        // Ahora podemos volver a iterar pero ahora con x
-                    <div key={ i} style = {style.row}> 
+                          <div key={ i} style = {style.row}> 
                         {x.map(y => 
                             <Card key={y.imageURL}><img style={style.img} src={y.imageURL} /></Card>                    
                         )}    
                     </div>
-                // Iteramos una fila (x,i) y que nos muestre todos los elementos.
-                // y en lugar de la imagen que sea src = https://placekitten.com/100/100
-                // usamos y.imageURL
+                         
                 )}
            </div>
                 
@@ -84,35 +80,20 @@ const mapStateToProps = (state : IState) => {
     const profileImage = tempPI || 'https://placekitten.com/100/100'
     /* // tslint:disable-next-line: no-console
     console.log(auth.currentUser && auth.currentUser.uid) */
-    // En lugar de usar filter usamos reduce. Tiene 2 parametros. El primero es una funcion. El 
-    // segundo el valor inicial que va a ser un arreglo.
-    // Este arreglo tendremos que poblarlo con datos.
-    // Da error en el arreglo porque inicialmente no vamos a poder mutarlo, no podemos hacer push.
-    // Para eso tenemos que indicar que va a ser un arreglo de post, tenemos que ir al duck.
     const filtered = Object.keys(data).reduce((acc, el) => {
-    // recibe 2 arg. 1 acumulador (acc) y elemento a iterar (el) que va a ser un id o propiedad del
-    // objeto de data
-    // Para filtrar agregamos el if
+
     if(data[el].userId !== (auth.currentUser && auth.currentUser.uid)){
         return acc
     }
     return acc.concat(data[el])
-    // if: si el usuario es <> al id del elemento retornamos el acumulador y en el caso 
-    // de ser el usuario retornamos el acumulador concatenado al elemento. De esta forma 
-    // filtramos los post.  
-    // Ahora podemos retornar el elemento de filtered y asignarlo a nuestra propiedad de data
-    }, [] as postsDuck.IPost[]) // <- acc
-    // cuando retornemos el estado vamos a traer solamente loading pero tambien fetched
-    // porque lo estamos usando en el constructor. Y data que son los datos de los posts
+   }, [] as postsDuck.IPost[]) 
     return {
-        data: chunk (filtered, 3), // segmenta filtered en pequeños arreglos de 3
+        data: chunk (filtered, 3), 
         fetched,
         loading,
         profileImage,
     }
 }
-
-// Pasamos un gran objeto que tiene todas las propiedades de post, users y submitprofileimg
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,any>) => bindActionCreators({
     ...postsDuck,
     ...usersDuck,
@@ -120,43 +101,3 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,any>) => bindActionC
 },dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
-
-
-// import * as React from 'react';
-// import ProfileImg from '../../components/ProfileImg';
-// import Button from 'src/components/Button';
-// import Card from 'src/components/Card';
-
-// const styles = {
-//     row: {
-//         display: 'flex',
-//         justifyContent: 'space-between',
-//         marginBottom: '10px',
-//        // padding: '15px',
-//     }
-//     // container: {
-//         // display: 'flex',
-//         // justifyContent: 'space-between',
-//         // padding: '15px',
-//     // }
-// }
-
-// export default class Profile extends React.Component {
-//     public render() {
-
-//         return (
-//             <div className="container-fluid">
-//                 <div  style={styles.row}>
-//                     <ProfileImg />
-//                     <Button>Agregar</Button>
-//                 </div>
-//                 <div style={styles.row}>
-//                     <Card>hola</Card>
-//                     <Card>hola</Card>
-//                     <Card>hola</Card>
-                   
-//                 </div>
-//             </div>
-//         );
-//     }
-// }

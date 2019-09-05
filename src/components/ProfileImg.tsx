@@ -29,8 +29,8 @@ const handleChange = (submitProfileImg: () => void, input: WrappedFieldInputProp
 // Declaramos la interfaz que se usa para indicar el tipo de input en Renderfield y en la clase
 // para indicar que recibira un profileimg
 interface IProfileImg{
-        submitProfileImg: () => void,
-        profileImage: string,
+        submitProfileImg: () => void
+        profileImage: string
 }
 // indicamos el tipo de renderfield al igual que con el formulario de inicio de sesion y registro 
 // ya que el input tiene any implicito.
@@ -69,30 +69,3 @@ class ProfileImg extends React.Component <InjectedFormProps<{}, IProfileImg> & I
 export default reduxForm<{},IProfileImg>({
     form: 'profileImg'
 })(ProfileImg)
-
-
-// import * as React from 'react';
-
-
-// const styles ={
-//     img:{
-//         borderRadius: '100%',
-//     }
-// }
-
-// export interface IProfileProps {
-//     urlfoto?: string
-// }
-
-// export default class ProfileImg extends React.Component<IProfileProps> {
-//     public render() {
-//         const { urlfoto = "http://placeimg.com/100/100/nature" } = this.props
-//         return (
-//             <div >
-//                 <img  style={styles.img} src={urlfoto}  alt="Foto de perfil"/>
-          
-//             </div>
-//         );
-//     }
-// }
- 

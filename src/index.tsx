@@ -1,31 +1,35 @@
-// import createHistory  from 'history/createBrowserHistory';
+// import createHistory from 'history/createBrowserHistory';
 import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router} from 'react-router'
-import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import {Provider} from 'react-redux';
+import {Router} from 'react-router';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
-import { reducer as formReducer} from 'redux-form'
-
 import App from './App';
+import * as reducers from './ducks';
+import {loadUserInitialData} from './ducks/Users'
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import * as reducers from './ducks'
-import services from './service';
-const store= createStore(combineReducers({
+import service from './service'
+
+const store = createStore(combineReducers({
   ...reducers,
   form: formReducer,
+}), applyMiddleware(thunk.withExtraArgument(service)))
 
-}), applyMiddleware(thunk.withExtraArgument(services)));
-const history = createBrowserHistory();
+const loadInitialData = () => store.dispatch(loadUserInitialData)
+
+const history = createBrowserHistory()
+
+
 ReactDOM.render(
-  <Provider store={store as any}>
-  <Router history={history}  >
-       <App  history={history} />
-  </Router>
+  <Provider store={store}>
+    <Router history={history}>
+      <App loadInitialData = {loadInitialData} history={history} />
+    </Router>
   </Provider>,
-
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

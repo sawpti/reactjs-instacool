@@ -2,6 +2,8 @@ import { firestore} from 'firebase';
 import { AnyAction, Dispatch } from 'redux';
 import { IServices } from '../service';
 import * as utils from '../utils';
+// import { setProfileImage } from './Users';
+// import { IServices } from '../service/index';
 
 
 // Definicion de tipos para nuestras acciones
@@ -109,7 +111,7 @@ export const fetchPosts = () =>
                imageURL: keyedImages[x],
               })
              // tslint:disable-next-line: no-console
-             console.log(posts)
+           //   console.log(posts)
             dispatch(fetchSuccess(posts))
         } catch (e) {
             // tslint:disable-next-line: no-console
@@ -174,4 +176,23 @@ export const share = (id: string) =>
             }
         } as IDataPosts)) // esto actualiza el post
     }
-    // Falta refactorizar like y share para que quede una unica funcion
+    
+    // Cambia la foto de perfil
+
+    // export const handleProfileImageSubmit= (payload:{file: File})=>
+    // async (dispatch:Dispatch, getState:()=> any, {auth, storage}:IServices)=>{
+    //     if (!auth.currentUser){
+    //         return
+    //     }
+    //     const {uid} = auth.currentUser
+    //     const storageRef= storage.ref()
+    //     const response = await storageRef
+    //     .child(`profileImages`)
+    //     .child(`${uid}.jpg` )
+    //     .put(payload.file)
+    //     const url= await response.ref.getDownloadURL()
+    //   dispatch(setProfileImage(url))
+    //    console.log(payload);
+    //    console.log(setProfileImage(url))
+    // }
+
