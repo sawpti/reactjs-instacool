@@ -29,7 +29,7 @@ const style={
 
 interface IProfileProps {
     fetchPosts: () => void   
-    handleProfileImageSubmit: ( a: { file: File }) => void
+    handleProfileImageSubmit: ( a: { profileImg: File }) => void
     submitProfileImg: () => void 
     fetched: boolean
     loading: boolean

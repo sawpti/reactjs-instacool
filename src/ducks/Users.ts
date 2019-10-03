@@ -47,47 +47,54 @@ async (dispatch:Dispatch, getstate: () => IState, {auth, db }: IServices)=>{
 export const loadUserInitialData = () => 
     async (dispatch: Dispatch, getState: () => IState, {storage, auth}: IServices) => {
         // // tslint:disable-next-line: no-console
-        await console.log('object -------------------')
-         console.log(`Auth CurrentUser ${auth.currentUser}`)
-        // if (!auth.currentUser){
-        //     console.log(`Auth CurrentUser ${auth.currentUser}`)
-        //     return            
-        // }
-        // 
-        // const storageRef = storage.ref()
-        // const {uid} = auth.currentUser
-        // const imageRef = storageRef
-        //     .child('profileImages')
-        //     .child(`${uid}.jpeg`)
+         //  console.log('object -------------------')
+        // console.log(`Auth CurrentUser ${auth.currentUser}`)
+        //  console.log('CurrentUser', auth.currentUser)
+        if (!auth.currentUser){
+           // console.log('CurrentUser', auth.currentUser)
+            return            
+        }
+        
+        const storageRef = storage.ref()
+        const {uid} = auth.currentUser
+        const imageRef = storageRef
+            .child('profileImages')
+            .child(`${uid}.jpeg`)
 
-        // const url = await imageRef.getDownloadURL()
-        // console.log(`url loaderUser ${url}`)
+        const url = await imageRef.getDownloadURL()
+        console.log(`url loaderUser ${url}`)
        
-        // dispatch(setProfileImage(url))
+        dispatch(setProfileImage(url))
     }
+//     export const loadUserInitialData = () => 
+//    async (dispatch: Dispatch, getState: () => IState, {auth, storage}: IServices) => {
+            
+//         if (!auth.currentUser){
+//             console.log("Exit")
+//             return
+//         }
+//         console.log("",auth)
+      
+//     }
+    
 
-export const handleProfileImageSubmit = (payload: {file:File}) => 
+export const handleProfileImageSubmit = (payload: {profileImg:File}) => 
 async (dispatch: Dispatch, getState: () => IState, {auth, storage}: IServices) => {
     // // tslint:disable-next-line: no-console
-    // console.log(payload)
+    console.log("payload",payload) // es me muestra el objeto
     if (!auth.currentUser){
         return
     }
     const {uid} = auth.currentUser
-    // const ruta='profileImages'
-    const blob = new Blob([payload.file], { type: "image/jpeg" });
-
-
-    console.log(uid)
     const storageRef = storage.ref()
-    console.log(storageRef)
-    console.log(payload)
-    const response = await storageRef
+    console.log("payload.file", payload.profileImg) // esto
+     const response = await storageRef
     .child(`profileImages`)
-    .child(`${uid}.jpeg` )
-    .put(blob)
+    .child(`${uid}.jpeg`)
+     .put(payload.profileImg)
+  console.log("payload.file", payload.profileImg)
    const url = await response.ref.getDownloadURL()
-   console.log(`url ${url}`)
+   console.log(`url:  ${url}`)
    dispatch(setProfileImage(url))
 }
 

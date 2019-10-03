@@ -51,7 +51,7 @@ export default () => {
     //     res.send('Hola mundo')
     // }) 
 
-     app.get('/posts/:postId/like', async (req:IRequest, res: any) => {
+     app.get('/api/posts/:postId/like', async (req:IRequest, res: any) => {
         const { uid } = req.user
         const { postId } = req.params  
         const snaps = await db.collection('likes')
@@ -80,7 +80,7 @@ export default () => {
         // efectuo correctamente la accion
         res.sendStatus(204)
     })
-    app.get('/posts/:postId/share', async (req: IRequest, res: any) => {
+    app.get('/api/posts/:postId/share', async (req: IRequest, res: any) => {
                 const { uid } = req.user
                 const { postId } = req.params
                 // Buscamos el post en cuestion

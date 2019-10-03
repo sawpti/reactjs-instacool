@@ -98,7 +98,7 @@ export const fetchPosts = () =>
             snaps.forEach(x => posts[x.id] = x.data())
             const imgIds = await Promise.all(Object.keys(posts).
                 map(async x => {
-                    const ref = storage.ref(`posts/${x}.jpg`)
+                    const ref = storage.ref(`posts/${x}.jpeg`)
                     const url = await ref.getDownloadURL()
                     return [x, url]
                 }))
@@ -128,6 +128,8 @@ export const like = (id: string) =>
             return
         }
         const token = await auth.currentUser.getIdToken()
+        console.log("token",token)
+        console.log("ID",id)
         // C87 - Conectando react con backend + C88 agregar token auth  
         // C89 - Agregamos un template string con el id del post seguido de la accion que queremos ejecutar
         // accion = like    
@@ -157,10 +159,10 @@ export const share = (id: string) =>
             }
         })
         // generamos la referencia de la imagen
-        const url = await storage.ref(`posts/${id}.jpg`).getDownloadURL()
+        const url = await storage.ref(`posts/${id}.jpeg`).getDownloadURL()
         const blob = await utils.download(url) // descarga el archivo y luego vamos a poder subirlo con el id que nos devuelve la peticion de abajo
         const { id: postId }: { id: string } = await result.json()
-        const ref = storage.ref(`posts/${postId}.jpg`) // le indicamos que puede guardar el archivo que va a recibir un blob
+        const ref = storage.ref(`posts/${postId}.jpeg`) // le indicamos que puede guardar el archivo que va a recibir un blob
         if (blob instanceof Blob) {
             // SOLUCION PARCIAL, EL IF NO DEBERIA IR
             await ref.put(blob)

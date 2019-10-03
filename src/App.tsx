@@ -11,7 +11,7 @@ import service from './service'
 
 // no coma (,) entre tipos en interfaces
 interface IAppProps{
-  history: History    
+  history: History  
   loadInitialData: () => void
 }
 
@@ -21,13 +21,15 @@ class App extends React.Component <IAppProps>{
   }
   public  componentDidMount(){
     const {auth} = service   
+        
     auth.onAuthStateChanged(user => {      
       if (user){
         // el usuario se esta registrando o iniciando sesion con exito.
-        const { loadInitialData} = this.props
-        console.log('hola')
+   const { loadInitialData} = this.props
+       // console.log('hola', loadInitialData())
+       
           loadInitialData()  // este método no  me lo toma acá, es como si no existiera...
-        console.log('hola')
+       //  console.log('hola')
         // ahora tenemos que inyectarle esta propiedad (loadInitialData)desde nuestro archivo index.tsx 
         if (['/','/register'].indexOf(location.pathname) > -1){
           const {history} = this.props
@@ -46,6 +48,39 @@ class App extends React.Component <IAppProps>{
       })
     })
   }
+
+//   public componentDidUpdate (){
+//     const {auth} = service   
+        
+//     auth.onAuthStateChanged(user => {      
+//       if (user){
+//         // el usuario se esta registrando o iniciando sesion con exito.
+//    const { loadInitialData} = this.props
+//         console.log('hola', loadInitialData())
+       
+//           loadInitialData()  // este método no  me lo toma acá, es como si no existiera...
+//         console.log('hola')
+//         // ahora tenemos que inyectarle esta propiedad (loadInitialData)desde nuestro archivo index.tsx 
+//         if (['/','/register'].indexOf(location.pathname) > -1){
+//           const {history} = this.props
+//           history.push('/app/newsfeed')
+//         }
+//       }else{
+//         if (/\app\/./.test(location.pathname)){
+//           const {history} = this.props
+//           history.push('/')
+//         }
+//       }
+// // // tslint:disable-next-line: no-console
+// //       console.log(user)
+//         this.setState({
+//         loading: false,
+//       })
+//     })
+
+
+
+//   }
   public render() {
     const {loading} = this.state
     return (
@@ -77,6 +112,7 @@ export default App;
 // import NewsFeed from './containers/NewsFeed/';
 // import BarraSuperior from './components/BarraSuperior';
 // import services from "./service";
+
 // interface IAppProps {
 //   history: History,
 //   loadInitialData: () => void

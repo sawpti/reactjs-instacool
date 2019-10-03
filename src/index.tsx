@@ -19,7 +19,7 @@ const store = createStore(combineReducers({
   form: formReducer,
 }), applyMiddleware(thunk.withExtraArgument(service)))
 
-const loadInitialData = () => store.dispatch(loadUserInitialData)
+const loadInitialData = () => store.dispatch(loadUserInitialData())
 
 const history = createBrowserHistory()
 
